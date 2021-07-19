@@ -1,8 +1,5 @@
 <section class="blogpost">
-  <div class="blogpost-details">
-    <h3>{{blogpost.title}}</h3>
-    <p>By: {{blogpost.user_id}}</p>
-    <p>Created on: {{blogpost.datecreated}}</p>
-    <p>{{blogpost.content}}</p>
-  </div>
+ {{#each blogpost as |blogpost|}}
+ {{> blogpost-details}}
+ {{/each}}
 </section>
