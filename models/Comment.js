@@ -1,10 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 //const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const User = require('./User');
 
-class Blogpost extends Model {}
+class Comment extends Model {}
 
-Blogpost.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,16 +13,12 @@ Blogpost.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    contents: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     datecreated: {
-      type: DataTypes.NOW,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     user_id: {
@@ -32,25 +29,33 @@ Blogpost.init(
         key: 'id'
       },
     },
+    blogpost_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'blogpost',
+        key: 'id'
+      },
+    },
   },
   {
       //revise hooks
     // hooks: {
-    //   beforeCreate: async (newBlogpostData) => {
-    //     newBlogpostData.password = await bcrypt.hash(newBlogpostData.password, 10);
-    //     return newBlogpostData;
+    //   beforeCreate: async (newCommentData) => {
+    //     newCommentData.password = await bcrypt.hash(newCommentData.password, 10);
+    //     return newCommentData;
     //   },
-    //   beforeUpdate: async (updatedBlogpostData) => {
-    //     updatedBlogpostData.password = await bcrypt.hash(updatedBlogpostData.password, 10);
-    //     return updatedBlogpostData;
+    //   beforeUpdate: async (updatedCommentData) => {
+    //     updatedCommentData.password = await bcrypt.hash(updatedCommentData.password, 10);
+    //     return updatedCommentData;
     //   },
     // },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blogpost',
+    modelName: 'comment',
   }
 );
 
-module.exports = Blogpost;
+module.exports = Comment;
