@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-//const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Blogpost extends Model {}
@@ -16,17 +15,17 @@ Blogpost.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    contents: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     datecreated: {
-      type: DataTypes.NOW,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      // allowNull: true,
       references: {
         model: 'user',
         key: 'id'
@@ -34,17 +33,6 @@ Blogpost.init(
     },
   },
   {
-      //revise hooks
-    // hooks: {
-    //   beforeCreate: async (newBlogpostData) => {
-    //     newBlogpostData.password = await bcrypt.hash(newBlogpostData.password, 10);
-    //     return newBlogpostData;
-    //   },
-    //   beforeUpdate: async (updatedBlogpostData) => {
-    //     updatedBlogpostData.password = await bcrypt.hash(updatedBlogpostData.password, 10);
-    //     return updatedBlogpostData;
-    //   },
-    // },
     sequelize,
     timestamps: false,
     freezeTableName: true,
