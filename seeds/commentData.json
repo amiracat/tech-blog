@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "content": "Hey hey welcome!",
+        "datecreated": "1/15/2021",
+        "user_id": "3",
+        "blogpost_id": "1"
+    },
+    {
+        "id": "2",
+        "content": "Your insight is spot on.",
+        "datecreated": "4/15/2021",
+        "user_id": "2",
+        "blogpost_id": "1"
+    },
+    {
+        "id": "3",
+        "content": "I totally agree!",
+        "datecreated": "8/10/2021",
+        "user_id": "1",
+        "blogpost_id": "1"
+    }
+]

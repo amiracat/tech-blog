@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "name": "Coco",
+        "email": "coco@coco.com",
+        "password": "iamacat1"
+    },
+    {
+        "id": "2",
+        "name": "Lily",
+        "email": "lily@coco.com",
+        "password": "iamacat2"
+    },
+    {
+        "id": "3",
+        "name": "Benny",
+        "email": "thebigfluff@coco.com",
+        "password": "iamacat3"
+    }
+]

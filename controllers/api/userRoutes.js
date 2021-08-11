@@ -1,15 +1,13 @@
 const router = require('express').Router();
-const {
-  route
-} = require('.');
-const {
-  User,
-  Blogpost,
-  Comment
-} = require('../../models');
+const { route } = require('.');
+
+const { User, Blogpost, Comment } = require('../../models');
+
 const withAuth = require('../../utils/auth.js');
 
-//get all users
+
+// Get all users
+
 router.get('/', (req, res) => {
   User.findAll({
       attributes: {
@@ -23,48 +21,48 @@ router.get('/', (req, res) => {
     });
 });
 
-//get one user
-router.get('/:id', (req, res) => {
-  User.findOne({
-      attributes: {
-        exclude: ['password']
-      },
-      where: {
-        req.params.id
-      },
-      include: [{
-          model: Blogpost,
-          attributes: ['id', 'title', 'content', 'datecreated']
-        },
-        {
-          model: Comment,
-          attributes: ['id', 'content', 'datecreated'],
-          include: {
-            model: Blogpost,
-            attributes: ['title']
-          }
-        }
-      ]
-    })
-    .then(userData => {
-      if (!userData) {
-        res.status(404).json({
-          message: 'No user found with this id.'
-        });
-        return;
-      }
-      res.json(userData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+
+// Get one user
+
+// router.get('/:id', (req, res) => {
+//   User.findOne({
+//       attributes: {
+//         exclude: ['password']
+//       },
+//       where: {
+//         req.params.id
+//       },
+//       include: [{
+//           model: Blogpost,
+//           attributes: ['id', 'title', 'content', 'datecreated']
+//         },
+//         {
+//           model: Comment,
+//           attributes: ['id', 'content', 'datecreated'],
+//           include: {
+//             model: Blogpost,
+//             attributes: ['title']
+//           }
+//         }
+//       ]
+//     })
+//     .then(userData => {
+//       if (!userData) {
+//         res.status(404).json({
+//           message: 'No user found with this id.'
+//         });
+//         return;
+//       }
+//       res.json(userData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 
-
-
-
+// Create new user
 
 router.post('/', async (req, res) => {
   try {
@@ -80,6 +78,10 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
+
+// Login user
 
 router.post('/login', async (req, res) => {
   try {
@@ -123,6 +125,9 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
+// Logout user
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

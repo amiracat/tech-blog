@@ -17,7 +17,7 @@ const hbs = exphbs.create({});
 //const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: process.env.DB_PASSWORD,
+  secret: process.env.DB_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,

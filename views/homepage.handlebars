@@ -1,13 +1,24 @@
-{{!-- {{#each users as |user| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{{get_emoji}}} {{user.name}}</h2>
-  </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
+<div>
+  <h3>Welcome, {{user_id}}!</h3>
+  <div>
+    {{#each blogposts as |blogpost|}}
+      <div class="row mb-4 project card">
+        <div class="col-md-5">
+          <h2 class="card header">
+            <a href="/blog/{{blogpost.id}}">{{blogpost.title}}</a>
+          </h2>
+          <p class="card-author">Posted by
+            {{blogpost.user.username}}
+            on
+            {{format_date blogpost.date_created}}</p>
+        </div>
+        <div class="col-md-7">
+          <p class="card-content">
+            {{blogpost.content}}
+          </p>
+        </div>
+      </div>
+
+    {{/each}}
   </div>
 </div>
-{{/each}} --}}
-{{#each blogposts as |blogpost|}}
-{{> blogpost-details}}
-{{/each}}

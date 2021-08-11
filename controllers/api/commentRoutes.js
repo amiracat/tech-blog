@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
         });
 });
 
+//get one comment -- MORE EDITS NEEDED HERE
+router.get('/:id', (req, res) => {
+    Comment.findOne({})
+        .then(commentData => res.json(commentData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+
+
 //add a comment
 router.post('/', withAuth, (req, res) => {
     if (req.session) {

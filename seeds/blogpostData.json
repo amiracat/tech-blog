@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "title": "First ever post on this blog",
+        "content": "Long-time lurker/fan, first-time poster. I love this site, go go go.",
+        "datecreated": "1/1/2021",
+        "user_id": "1"
+    },
+    {
+        "id": "2",
+        "title": "Technology is important",
+        "content": "We all have mobile devices, ya know?",
+        "datecreated": "4/1/2021",
+        "user_id": "1"
+    },
+    {
+        "id": "3",
+        "title": "Best gaming moment",
+        "content": "I am an epic gamer mom. My kids even tell me so.",
+        "datecreated": "7/10/2021",
+        "user_id": "1"
+    }
+]

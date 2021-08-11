@@ -1,5 +1,24 @@
-<section class="blogpost">
- {{#each blogpost as |blogpost|}}
- {{> blogpost-details}}
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <div class="surround">
+    <p>{{content}}</p>
+    <p class="card-author">Posted by {{user.username}} on {{format_date date_created}}</p>
+    <p>
+      <button class="btn comment-button">Comment</button>
+    </p>
+  </div>
+</div>
+
+ {{#each comments as |commen|}}
+
+<div class="row mb-4 project surround-mini">
+    <div class="col-md-5">
+      <p class="card-author">Posted by {{comment.user.username}} on {{format_date comment.date_created}}</p>
+    </div>
+    <div class="col-md-7">
+      <p>{{comment.comment}}</p>
+    </div>
+</div>
  {{/each}}
-</section>
+
+<script src="../public/js/blogpost.js"></script>

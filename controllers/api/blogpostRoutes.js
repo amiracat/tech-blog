@@ -20,6 +20,22 @@ router.get('/', (req, res) => {
     });
 });
 
+//get one post
+router.get('/:id', (req, res) => {
+    Blogpost.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(blogpostData => res.json(blogpostData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+
+
 //add a blogpost
 router.post('/', withAuth, (req, res) => {
     Blogpost.create({
